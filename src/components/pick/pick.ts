@@ -1,0 +1,135 @@
+/// <reference path="../../typings/tsd.d.ts" />
+/// <reference path="../../typings/lodash/lodash.d.ts" />
+
+import {View, Component, CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
+import {RouterLink} from 'angular2/router';
+import {RoseService} from '../../services/rose-service';
+import {ShoppingCartService} from "../../services/shopping-cart-service";
+import {RoseBush} from "../../types/rose-bush";
+
+@Component({
+    selector: 'pick',
+    bindings: [RoseService]
+})
+@View({
+    templateUrl: './components/pick/pick.html',
+    directives: [RouterLink, CORE_DIRECTIVES, FORM_DIRECTIVES]
+})
+export class Pick {
+    roseInventory;
+    model:Array<RoseBush>;
+    maxRoses:number;
+    totalQuantity: number;
+
+    catSelected = false;
+
+    constructor(roseService:RoseService, shoppingCartService:ShoppingCartService) {
+        this.model = shoppingCartService.roses;
+        this.maxRoses = shoppingCartService.maxRoses;
+        this.totalQuantity = shoppingCartService.totalQuantity;
+        this.roseInventory = roseService.getRoses();
+     }
+
+    static calculateSubTotal(rose){
+        if(rose.price && rose.quantity){
+            rose.subtotal = rose.price * rose.quantity;
+        }else{
+            rose.subtotal = null;
+        }
+        return rose.subtotal;
+    }
+
+    getRoses($event) {
+        //return this.roseInventory[$event.target.value];
+        this.catSelected = true;
+    }
+
+    addRoseBush() {
+        this.model.push(new RoseBush());
+    }
+
+    removeRoseBush(roseBush:RoseBush) {
+        _.pull(this.model, roseBush);
+        this.calculateTotalQuantity();
+    }
+
+    getCategoryIndex(rose) {
+        var index = _.findIndex(this.roseInventory, {'name': rose.category});
+        if (index == -1) {
+            return 0;
+        } else {
+            return index;
+        }
+    }
+
+    setRosePrice(rose) {
+        var catIndex = _.findIndex(this.roseInventory, {'name': rose.category});
+        if (catIndex != -1) {
+            var index = _.findIndex(this.roseInventory[catIndex].products, {'name': rose.name});
+            if (index == -1) {
+                return null;
+            } else {
+                rose.price = this.roseInventory[catIndex].products[index].price;
+                return rose.price;
+            }
+        } else {
+            rose.price = null;
+            rose.points = null;
+            rose.quantity = null;
+            return null;
+        }
+    }
+
+    getRating(rose) {
+        var catIndex = rose? _.findIndex(this.roseInventory, {'name': rose.category}): -1;
+        if (catIndex != -1) {
+            var index = _.findIndex(this.roseInventory[catIndex].products, {'name': rose.name});
+            if (index == -1) {
+                return null;
+            } else {
+                rose.points = this.roseInventory[catIndex].products[index].points;
+                //return rose.points;
+
+                return  _.range(0, rose.points);
+            }
+        } else {
+            return null;
+        }
+    }
+
+    calculateSubTotal(rose){
+        if(rose.price && rose.quantity){
+            rose.subtotal = rose.price * rose.quantity;
+        }else{
+            rose.subtotal = null;
+        }
+        return rose.subtotal;
+    }
+
+    emptyValues(rose){
+        rose.quantity = null;
+    }
+
+    calculateTotalQuantity(){
+        this.totalQuantity  = _.chain(this.model)
+            .pluck('quantity')
+            .without(null)
+            .reduce( function(sum, num) { return parseInt(sum)+ (parseInt(num) + 0) } )
+            .value();
+        //console.log(this.totalQuantity);
+    }
+
+    checkMaxRoses(){
+        this.calculateTotalQuantity();
+        if(this.totalQuantity){
+            return this.maxRoses >= this.totalQuantity;
+        }else{
+            return true;
+        }
+    }
+
+    getMaxRoses(){
+        return this.maxRoses;
+    }
+}
+
