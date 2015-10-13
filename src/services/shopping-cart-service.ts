@@ -7,7 +7,7 @@ export class ShoppingCartService {
     // personal info
     firstName: string = "Kevin";
     lastName: string = "Hennessy";
-    country: string = "Canada";
+    country: string = "US";
     creditCard: number = 897999923;
     email: string = "Kevin.Hennessy@appliedis.com";
 
@@ -21,9 +21,8 @@ export class ShoppingCartService {
     roses: Array<RoseBush> = [(new RoseBush())];
 
     // purchase info
-    totalQuantity = 15;
-    amount = 35;
-
+    totalQuantity = 0;
+    amount = 0;
  }
 
 

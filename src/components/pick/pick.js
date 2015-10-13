@@ -19,6 +19,7 @@ var rose_bush_1 = require("../../types/rose-bush");
 var Pick = (function () {
     function Pick(roseService, shoppingCartService) {
         this.catSelected = false;
+        this.service = shoppingCartService;
         this.model = shoppingCartService.roses;
         this.maxRoses = shoppingCartService.maxRoses;
         this.totalQuantity = shoppingCartService.totalQuantity;
@@ -34,7 +35,6 @@ var Pick = (function () {
         return rose.subtotal;
     };
     Pick.prototype.getRoses = function ($event) {
-        //return this.roseInventory[$event.target.value];
         this.catSelected = true;
     };
     Pick.prototype.addRoseBush = function () {
@@ -81,7 +81,6 @@ var Pick = (function () {
             }
             else {
                 rose.points = this.roseInventory[catIndex].products[index].points;
-                //return rose.points;
                 return _.range(0, rose.points);
             }
         }
@@ -107,7 +106,7 @@ var Pick = (function () {
             .without(null)
             .reduce(function (sum, num) { return parseInt(sum) + (parseInt(num) + 0); })
             .value();
-        //console.log(this.totalQuantity);
+        this.service.totalQuantity = this.totalQuantity;
     };
     Pick.prototype.checkMaxRoses = function () {
         this.calculateTotalQuantity();

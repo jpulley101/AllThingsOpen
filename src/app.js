@@ -29,11 +29,11 @@ var DisplayComponent = (function () {
     DisplayComponent = __decorate([
         angular2_1.Component({
             selector: "my-app",
-            bindings: [welcome_1.Welcome, plan_1.Plan, pick_1.Pick, purchase_1.Purchase, shopping_cart_service_1.ShoppingCartService, router_2.RouterLink, router_2.RouterOutlet]
+            bindings: [welcome_1.Welcome, plan_1.Plan, pick_1.Pick, purchase_1.Purchase, shopping_cart_service_1.ShoppingCartService, router_1.ROUTER_DIRECTIVES]
         }),
         angular2_1.View({
             templateUrl: 'nav.html',
-            directives: [router_2.RouterLink, router_2.RouterOutlet],
+            directives: [router_1.ROUTER_DIRECTIVES],
         }),
         router_2.RouteConfig([
             { path: '/', component: welcome_1.Welcome, as: 'Home' },

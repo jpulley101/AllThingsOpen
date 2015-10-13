@@ -1,5 +1,4 @@
 /// <reference path="../../typings/tsd.d.ts" />
-
 import {CORE_DIRECTIVES, View, Component, NgModel} from 'angular2/angular2';
 import {RouterLink} from 'angular2/router';
 import {ShoppingCartService} from "../../services/shopping-cart-service";

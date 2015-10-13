@@ -20,10 +20,12 @@ export class Pick {
     model:Array<RoseBush>;
     maxRoses:number;
     totalQuantity: number;
+    service: ShoppingCartService;
 
     catSelected = false;
 
     constructor(roseService:RoseService, shoppingCartService:ShoppingCartService) {
+        this.service = shoppingCartService;
         this.model = shoppingCartService.roses;
         this.maxRoses = shoppingCartService.maxRoses;
         this.totalQuantity = shoppingCartService.totalQuantity;
@@ -40,7 +42,6 @@ export class Pick {
     }
 
     getRoses($event) {
-        //return this.roseInventory[$event.target.value];
         this.catSelected = true;
     }
 
@@ -88,8 +89,6 @@ export class Pick {
                 return null;
             } else {
                 rose.points = this.roseInventory[catIndex].products[index].points;
-                //return rose.points;
-
                 return  _.range(0, rose.points);
             }
         } else {
@@ -116,8 +115,8 @@ export class Pick {
             .without(null)
             .reduce( function(sum, num) { return parseInt(sum)+ (parseInt(num) + 0) } )
             .value();
-        //console.log(this.totalQuantity);
-    }
+        this.service.totalQuantity = this.totalQuantity;
+     }
 
     checkMaxRoses(){
         this.calculateTotalQuantity();

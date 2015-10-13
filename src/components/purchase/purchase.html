@@ -2,19 +2,23 @@
     <div class="row">
         <div class="col s10 m12">
             <h2 class="header">Purchase</h2>
-
+            <div></div>
             <div class="card-panel grey-text white z-depth-5">
-                <h5 class="header col s12 light">Thanks {{model.firstName }}!</h5>
+                <h5 class="header col s12 light">Thanks {{model.firstName }} for your order!</h5>
+
+                <div>Number of roses: {{model.totalQuantity}}</div>
+                <div>Total Cost: {{model.amount | currency: 'USD': true: '.2-2'}}</div>
+
                 <form (ng-submit)="onSubmit()" #f="form">
                     <p>
                         <label for="firstName">First Name</label>
-                        <input type="text" id="firstName" ng-control="firstName" [(ng-model)]="model.firstName" required>
+                        <input type="text" id="firstName" ng-control="firstName" [(ng-model)]="model.firstName" required class="validate" required="" aria-required="true">
                         <show-error control="firstName" [errors]="['required']"></show-error>
                     </p>
 
                     <p>
                         <label for="lastName">Last Name</label>
-                        <input type="text" id="lastName" ng-control="lastName" [(ng-model)]="model.lastName" required>
+                        <input type="text" id="lastName" ng-control="lastName" [(ng-model)]="model.lastName" required class="validate" required="" aria-required="true">
                         <show-error control="lastName" [errors]="['required']"></show-error>
                     </p>
 
@@ -27,27 +31,25 @@
 
                     <p>
                         <label for="creditCard">Credit Card</label>
-                        <input type="text" id="creditCard" ng-control="creditCard" [(ng-model)]="model.creditCard"
-                               required>
+                        <input type="text" id="creditCard" ng-control="creditCard" [(ng-model)]="model.creditCard" required class="validate" required="" aria-required="true">
                         <show-error control="creditCard" [errors]="['required', 'invalidCreditCard']"></show-error>
                     </p>
 
-                    <p>
+<!--                    <p>
                         <label for="amount">Amount</label>
                         <input type="number" id="amount" ng-control="amount" [(ng-model)]="model.amount" required>
                         <show-error control="amount" [errors]="['required']"></show-error>
-                    </p>
+                    </p>-->
 
                     <p>
                         <label for="email">Email</label>
-                        <input type="email" id="email" ng-control="email" [(ng-model)]="model.email" required>
+                        <input type="email" id="email" ng-control="email" [(ng-model)]="model.email" required class="validate" required="" aria-required="true">
                         <show-error control="email" [errors]="['required']"></show-error>
                     </p>
 
                 <div class="row valign-wrapper">
                     <div class="valign right-align col s12">
-                        <!--<a [router-link]="['/purchase']"class="waves-effect waves-light btn">Submit Order<i class="material-icons right">send</i></a>-->
-                        <button type="submit" [disabled]="!f.form.valid" class="waves-effect waves-light btn">Submit Order<i class="material-icons right">send</i></button>
+                         <button type="submit" [disabled]="!f.form.valid" class="waves-effect waves-light btn">Submit Order<i class="material-icons right">send</i></button>
                     </div>
                 </div>
             </form>

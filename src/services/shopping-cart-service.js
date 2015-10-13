@@ -7,14 +7,14 @@ var ShoppingCartService = (function () {
         // personal info
         this.firstName = "Kevin";
         this.lastName = "Hennessy";
-        this.country = "Canada";
+        this.country = "US";
         this.creditCard = 897999923;
         this.email = "Kevin.Hennessy@appliedis.com";
         // roses
         this.roses = [(new rose_bush_1.RoseBush())];
         // purchase info
-        this.totalQuantity = 15;
-        this.amount = 35;
+        this.totalQuantity = 0;
+        this.amount = 0;
     }
     return ShoppingCartService;
 })();

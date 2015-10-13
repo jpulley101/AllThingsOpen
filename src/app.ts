@@ -2,7 +2,7 @@
 
 import {HTTP_BINDINGS} from 'angular2/http';
 import {Component, View, bootstrap, bind, NgModel} from 'angular2/angular2';
-import {ROUTER_BINDINGS, ROUTER_PRIMARY_COMPONENT, LocationStrategy, HashLocationStrategy} from 'angular2/router';
+import {ROUTER_BINDINGS, ROUTER_DIRECTIVES, ROUTER_PRIMARY_COMPONENT, LocationStrategy, HashLocationStrategy} from 'angular2/router';
 import {RouterLink, RouteConfig, Router, RouterOutlet, Location, RouteParams} from 'angular2/router';
 import {Welcome} from '../src/components/welcome/welcome';
 import {Plan} from '../src/components/plan/plan';
@@ -12,11 +12,11 @@ import {ShoppingCartService} from '../src/services/shopping-cart-service';
 
 @Component({
   selector: "my-app",
-  bindings: [Welcome, Plan, Pick, Purchase, ShoppingCartService, RouterLink, RouterOutlet]
+  bindings: [Welcome, Plan, Pick, Purchase, ShoppingCartService, ROUTER_DIRECTIVES]
 })
 @View({
   templateUrl: 'nav.html',
-  directives:[RouterLink, RouterOutlet],
+  directives:[ROUTER_DIRECTIVES],
 })
 @RouteConfig([
   {path: '/', component: Welcome, as: 'Home'},

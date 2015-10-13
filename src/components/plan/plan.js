@@ -1,4 +1,3 @@
-/// <reference path="../../typings/tsd.d.ts" />
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
     switch (arguments.length) {
@@ -10,6 +9,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+/// <reference path="../../typings/tsd.d.ts" />
 var angular2_1 = require('angular2/angular2');
 var router_1 = require('angular2/router');
 var shopping_cart_service_1 = require("../../services/shopping-cart-service");
