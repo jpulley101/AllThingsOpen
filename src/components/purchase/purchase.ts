@@ -21,7 +21,7 @@ import List = _.List;
 @Component({selector: 'show-error', properties: ['controlPath: control', 'errorTypes: errors']})
 @View({
     template: `
-    <span *ng-if="errorMessage !== null">{{errorMessage}}</span>
+    <div *ng-if="errorMessage !== null"  class="valign materialize-red-text text-lighten-2">{{errorMessage}}</div>
   `,
     directives: [NgIf]
 })
@@ -43,7 +43,7 @@ class ShowError {
     }
 
     _errorMessage(code) {
-        var config = {'required': 'is required', 'invalidCreditCard': 'is invalid credit card number'};
+        var config = {'required': 'is required!', 'invalidCreditCard': 'is invalid credit card number'};
         return config[code];
     }
 }

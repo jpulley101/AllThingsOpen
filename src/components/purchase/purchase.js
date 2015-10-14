@@ -45,13 +45,13 @@ var ShowError = (function () {
         configurable: true
     });
     ShowError.prototype._errorMessage = function (code) {
-        var config = { 'required': 'is required', 'invalidCreditCard': 'is invalid credit card number' };
+        var config = { 'required': 'is required!', 'invalidCreditCard': 'is invalid credit card number' };
         return config[code];
     };
     ShowError = __decorate([
         angular2_1.Component({ selector: 'show-error', properties: ['controlPath: control', 'errorTypes: errors'] }),
         angular2_1.View({
-            template: "\n    <span *ng-if=\"errorMessage !== null\">{{errorMessage}}</span>\n  ",
+            template: "\n    <div *ng-if=\"errorMessage !== null\"  class=\"valign materialize-red-text text-lighten-2\">{{errorMessage}}</div>\n  ",
             directives: [angular2_1.NgIf]
         }), 
         __metadata('design:paramtypes', [angular2_1.NgForm])

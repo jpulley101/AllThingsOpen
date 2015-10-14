@@ -30,7 +30,6 @@ class DisplayComponent {
   constructor(router: Router, location: Location) {
     this.router = router;
     this.location = location;
-
   }
   getLinkStyle(path) {
     //return this.location.path() === path;

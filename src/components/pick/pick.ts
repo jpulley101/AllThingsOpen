@@ -112,7 +112,7 @@ export class Pick {
     calculateTotalQuantity(){
         this.totalQuantity  = _.chain(this.model)
             .pluck('quantity')
-            .without(null)
+            .compact()
             .reduce( function(sum, num) { return parseInt(sum)+ (parseInt(num) + 0) } )
             .value();
         this.service.totalQuantity = this.totalQuantity;
