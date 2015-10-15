@@ -12,59 +12,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var angular2_1 = require('angular2/angular2');
 var router_1 = require('angular2/router');
 var shopping_cart_service_1 = require('../../services/shopping-cart-service');
-/**
- * This is a component that displays an error message.
- *
- * For instance,
- *
- * <show-error control="creditCard" [errors]="['required', 'invalidCreditCard']"></show-error>
- *
- * Will display the "is required" error if the control is empty, and "invalid credit card" if the
- * control is not empty
- * but not valid.
- *
- * In a real application, this component would receive a service that would map an error code to an
- * actual error message.
- * To make it simple, we are using a simple map here.
- */
-var ShowError = (function () {
-    function ShowError(formDir) {
-        this.formDir = formDir;
-    }
-    Object.defineProperty(ShowError.prototype, "errorMessage", {
-        get: function () {
-            var c = this.formDir.form.find(this.controlPath);
-            for (var i = 0; i < this.errorTypes.length; ++i) {
-                if (c && c.touched && c.hasError(this.errorTypes[i])) {
-                    return this._errorMessage(this.errorTypes[i]);
-                }
-            }
-            return null;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(ShowError.prototype, "displayName", {
-        get: function () {
-            return this.display;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    ShowError.prototype._errorMessage = function (code) {
-        var config = { 'required': 'is required!', 'invalidCreditCard': 'is invalid credit card number' };
-        return config[code];
-    };
-    ShowError = __decorate([
-        angular2_1.Component({ selector: 'show-error', properties: ['controlPath: control', 'errorTypes: errors', 'display: display'] }),
-        angular2_1.View({
-            template: "\n    <div *ng-if=\"errorMessage !== null\"  class=\"valign materialize-red-text text-lighten-2\">{{displayName}} {{errorMessage}}</div>\n  ",
-            directives: [angular2_1.NgIf]
-        }), 
-        __metadata('design:paramtypes', [angular2_1.NgForm])
-    ], ShowError);
-    return ShowError;
-})();
+var show_error_1 = require('../../helpers/show-error');
 var Purchase = (function () {
     function Purchase(shoppingCartService) {
         this.model = new shopping_cart_service_1.ShoppingCartService();
@@ -89,7 +37,7 @@ var Purchase = (function () {
         }),
         angular2_1.View({
             templateUrl: './components/purchase/purchase.html',
-            directives: [router_1.RouterLink, angular2_1.CORE_DIRECTIVES, angular2_1.FORM_DIRECTIVES, ShowError]
+            directives: [router_1.RouterLink, angular2_1.CORE_DIRECTIVES, angular2_1.FORM_DIRECTIVES, show_error_1.ShowError]
         }), 
         __metadata('design:paramtypes', [shopping_cart_service_1.ShoppingCartService])
     ], Purchase);

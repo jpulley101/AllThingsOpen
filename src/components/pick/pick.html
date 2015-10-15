@@ -4,7 +4,6 @@
             <h2 class="header">Select Roses</h2>
 
             <div class="card-panel grey-text white z-depth-5">
-                <!--<div class="valign left-align col s7" *ng-if="cart.maxRoses">The maximum number of roses is: {{ cart.maxRoses }}</div>-->
                 <table width="100%">
                     <thead>
                     <tr>
@@ -53,7 +52,7 @@
                 <button class="waves-effect waves-light btn" (click)="addRoseBush()" [disabled]="!checkMaxRoses()">Add
                     Rose Bush
                 </button>
-                <div *ng-if="!checkMaxRoses()">You've selected too many plants! Please remove some
+                <div *ng-if="!checkMaxRoses()" class="red-text">You've selected too many plants! Please remove some
                     or increase the size of your garden (currently {{getMaxRoses()}} plants).
                 </div>
                 <div class="row valign-wrapper">
