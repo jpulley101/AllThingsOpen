@@ -18,10 +18,10 @@ import List = _.List;
  * actual error message.
  * To make it simple, we are using a simple map here.
  */
-@Component({selector: 'show-error', properties: ['controlPath: control', 'errorTypes: errors']})
+@Component({selector: 'show-error', properties: ['controlPath: control', 'errorTypes: errors', 'display: display']})
 @View({
     template: `
-    <div *ng-if="errorMessage !== null"  class="valign materialize-red-text text-lighten-2">{{errorMessage}}</div>
+    <div *ng-if="errorMessage !== null"  class="valign materialize-red-text text-lighten-2">{{displayName}} {{errorMessage}}</div>
   `,
     directives: [NgIf]
 })
@@ -29,6 +29,7 @@ class ShowError {
     formDir;
     controlPath: string;
     errorTypes: List<string>;
+    display: string;
 
     constructor( formDir: NgForm) { this.formDir = formDir; }
 
@@ -40,6 +41,10 @@ class ShowError {
             }
         }
         return null;
+    }
+
+    get displayName(){
+        return this.display;
     }
 
     _errorMessage(code) {

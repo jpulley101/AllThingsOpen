@@ -44,14 +44,21 @@ var ShowError = (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(ShowError.prototype, "displayName", {
+        get: function () {
+            return this.display;
+        },
+        enumerable: true,
+        configurable: true
+    });
     ShowError.prototype._errorMessage = function (code) {
         var config = { 'required': 'is required!', 'invalidCreditCard': 'is invalid credit card number' };
         return config[code];
     };
     ShowError = __decorate([
-        angular2_1.Component({ selector: 'show-error', properties: ['controlPath: control', 'errorTypes: errors'] }),
+        angular2_1.Component({ selector: 'show-error', properties: ['controlPath: control', 'errorTypes: errors', 'display: display'] }),
         angular2_1.View({
-            template: "\n    <div *ng-if=\"errorMessage !== null\"  class=\"valign materialize-red-text text-lighten-2\">{{errorMessage}}</div>\n  ",
+            template: "\n    <div *ng-if=\"errorMessage !== null\"  class=\"valign materialize-red-text text-lighten-2\">{{displayName}} {{errorMessage}}</div>\n  ",
             directives: [angular2_1.NgIf]
         }), 
         __metadata('design:paramtypes', [angular2_1.NgForm])

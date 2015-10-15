@@ -14,16 +14,14 @@
                         <div class="row">
                             <div class="input-field col s3">
                                 <input type="text" id="firstName" ng-control="firstName" [(ng-model)]="model.firstName" required class="validate">
+                                <show-error control="firstName" [display]="['First Name']" [errors]="['required']"></show-error>
                                 <label class="active" for="firstName">First Name</label>
-                            </div>
-                            <div class="input-field col s3 valign-wrapper">
-                               <show-error control="firstName" [errors]="['required']"></show-error>
                             </div>
                          </div>
                         <div class="row">
                             <div class="input-field col s3">
                                 <input type="text" id="lastName" ng-control="lastName" [(ng-model)]="model.lastName" required class="validate">
-                                <show-error control="lastName" [errors]="['required']"></show-error>
+                                <show-error control="lastName" [display]="['Last Name']" [errors]="['required']"></show-error>
                                 <label class="active" for="lastName">Last Name</label>
                             </div>
                         </div>
@@ -39,14 +37,14 @@
                             <div class="input-field col s6">
                                 <label class="active" for="creditCard">Credit Card</label>
                                 <input type="text" id="creditCard" ng-control="creditCard" [(ng-model)]="model.creditCard" required class="validate">
-                                <show-error control="creditCard" [errors]="['required', 'invalidCreditCard']"></show-error>
+                                <show-error control="creditCard" [display]="['Credit Card']" [errors]="['required', 'invalidCreditCard']"></show-error>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
                                 <label class="active" for="email" data-error="wrong" data-success="right">Email</label>
                                 <input type="email" id="email" ng-control="email" [(ng-model)]="model.email" required class="validate" type="email">
-                                <show-error control="email" [errors]="['required']"></show-error>
+                                <show-error control="email" [display]="['Email']" [errors]="['required']"></show-error>
                             </div>
                         </div>
                     <div class="row valign-wrapper">
