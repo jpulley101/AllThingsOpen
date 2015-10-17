@@ -8,7 +8,7 @@ import {ShoppingCartService} from "../../services/shopping-cart-service";
 import {RoseBush} from "../../types/rose-bush";
 
 @Component({
-    selector: 'pick',
+    selector: 'Pick',
     bindings: [RoseService]
 })
 @View({

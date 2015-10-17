@@ -3,7 +3,7 @@ import { RouterLink } from 'angular2/router';
 import { ShoppingCartService } from '../../services/shopping-cart-service';
 
 @Component({
-    selector: 'welcome'
+    selector: 'Welcome'
 })
 @View({
     templateUrl: './components/welcome/welcome.html',
@@ -11,11 +11,8 @@ import { ShoppingCartService } from '../../services/shopping-cart-service';
 })
 export class Welcome {
     myName: string;
-    cart: ShoppingCartService;
 
     constructor(shoppingCartService:ShoppingCartService) {
-        this.cart = shoppingCartService;
-        //this.cart.firstName ="Kevin";
-        this.myName = this.cart.firstName;
+        this.myName = shoppingCartService.firstName;
     }
 }

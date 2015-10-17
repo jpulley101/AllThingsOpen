@@ -17,16 +17,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <!--<form (ng-submit)="onSubmit()" #f="form">-->
                     <tr *ng-for="#rose of model; #i=index">
                         <td width='20%'>
-                            <select #select1 class="browser-default" id="category" [(ng-model)]="rose.category"
+                            <select class="browser-default" id="category" [(ng-model)]="rose.category"
                                     (change)="emptyValues(rose)">
                                 <option *ng-for="#c of roseInventory" [value]="c.name">{{c.name}}</option>
                             </select>
                         </td>
                         <td width='20%'>
-                            <select #select2 class="browser-default" [(ng-model)]="rose.name" *ng-if="rose.category">
+                            <select class="browser-default" [(ng-model)]="rose.name" *ng-if="rose.category">
                                 <option *ng-for="#p of roseInventory[getCategoryIndex(rose)].products" [value]="p.name">
                                     {{p.name}}
                                 </option>

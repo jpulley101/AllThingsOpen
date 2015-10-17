@@ -42,11 +42,11 @@ var Plan = (function () {
     };
     Plan = __decorate([
         angular2_1.Component({
-            selector: 'plan'
+            selector: 'Plan'
         }),
         angular2_1.View({
             templateUrl: './components/plan/plan.html',
-            directives: [angular2_1.CORE_DIRECTIVES, router_1.RouterLink, angular2_1.NgModel]
+            directives: [angular2_1.CORE_DIRECTIVES, router_1.RouterLink]
         }), 
         __metadata('design:paramtypes', [shopping_cart_service_1.ShoppingCartService])
     ], Plan);

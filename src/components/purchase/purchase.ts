@@ -15,7 +15,6 @@ export class Purchase {
     countries = ['US', 'Canada'];
 
     constructor(shoppingCartService:ShoppingCartService) {
-
         this.model = shoppingCartService;
         this.calculateTotalAmount()
     }

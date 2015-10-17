@@ -14,13 +14,11 @@ var router_1 = require('angular2/router');
 var shopping_cart_service_1 = require('../../services/shopping-cart-service');
 var Welcome = (function () {
     function Welcome(shoppingCartService) {
-        this.cart = shoppingCartService;
-        //this.cart.firstName ="Kevin";
-        this.myName = this.cart.firstName;
+        this.myName = shoppingCartService.firstName;
     }
     Welcome = __decorate([
         angular2_1.Component({
-            selector: 'welcome'
+            selector: 'Welcome'
         }),
         angular2_1.View({
             templateUrl: './components/welcome/welcome.html',

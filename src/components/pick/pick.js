@@ -122,7 +122,7 @@ var Pick = (function () {
     };
     Pick = __decorate([
         angular2_1.Component({
-            selector: 'pick',
+            selector: 'Pick',
             bindings: [rose_service_1.RoseService]
         }),
         angular2_1.View({
