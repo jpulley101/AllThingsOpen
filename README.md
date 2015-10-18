@@ -3,7 +3,7 @@ Repository for All Things Open talk
 
 ##Getting Started
 
-1. Clone this repo
+1. Clone this repo.
 2. Install npm.
 3. Run `npm start` to see the app in the browser.
 
