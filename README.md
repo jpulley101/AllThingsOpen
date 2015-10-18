@@ -1,9 +1,8 @@
 # AllThingsOpen
 Repository for All Things Open talk
 
-##Getting Started
+##To view the app in your browser
 
-To view the app in your browser
 1. Clone this repo.
 2. Install npm (if not already installed).
 3. Then `npm install live-server -g`
